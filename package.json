@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dcastro4100/github.io/frontend_marvel",
+  "homepage": "https://dcastro4100.github.io/frontend_marvel",
   "scripts": {
     "predeploy":"npm run build",
     "deploy":"gh-pages -d dist",

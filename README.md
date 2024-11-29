@@ -62,7 +62,7 @@ npm run dev   `
 yarn dev
 ```
 
-Esto iniciará un servidor de desarrollo y podrás ver la aplicación en tu navegador en http://localhost:5173.
+Esto iniciará un servidor de desarrollo y podrás ver la aplicación en tu navegador en http://localhost:5173/frontend_marvel/.
 
     
 

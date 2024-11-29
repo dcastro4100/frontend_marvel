@@ -17,7 +17,8 @@ export const SeriePage = () => {
         placeholdertextbox:'Buscar serie',
         subtitulo:'realiza la busqueda de una serie',
         titulo:'Buscar serie',
-        tag:'serie'
+        tag:'serie',
+        tipo:'serie'
     }
 
 

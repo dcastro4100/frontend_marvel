@@ -89,7 +89,56 @@ export const getMarvelComicById = async (id = '') => {
         console.log(response.data);
         return response.data;
     } catch (error) {
-        console.error('Error al consultar personajes:', error);
+        console.error('Error al consultar comics:', error);
+        throw error;
+    }
+};
+
+
+
+
+export const getMarvelSeries = async (name = '') => {
+    try {
+        const params = name ? { titleStartsWith:name } : {};
+        const response = await backendApi.get('/series', { params });
+        return response.data;
+    } catch (error) {
+        console.error('Error al consultar comics:', error);
+        throw error;
+    }
+};
+
+
+export const extractSerieData = (responseData) => {
+    if (!responseData || !responseData.data || !responseData.data.results) {
+        console.error('Respuesta inválida serie:', responseData);
+        return [];
+    }
+
+    // Mapear los resultados para extraer los atributos necesarios
+    return responseData.data.results.map((comic) => {
+        const { id, name:title, description, thumbnail } = comic;
+
+        // Construir la URL completa de la imagen
+        const imageUrl = `${thumbnail.path}.${thumbnail.extension}`;
+
+        return {
+            id,
+            name,
+            description,
+            image: imageUrl,
+        };
+    });
+};
+
+export const getMarvelSerieById = async (id = '') => {
+    try {
+        const params = { id };
+        const response = await backendApi.get(`/series/${id}`);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error al consultar series:', error);
         throw error;
     }
 };

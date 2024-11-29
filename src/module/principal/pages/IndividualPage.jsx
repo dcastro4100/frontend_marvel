@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { getMarvelCharacterById, getMarvelComicById, extractCharacterData, extractComicData } from '../../../services';
+import { getMarvelCharacterById, getMarvelComicById, extractCharacterData, extractComicData, getMarvelSerieById, extractSerieData } from '../../../services';
 import { CustomCard } from '../components/CustomCard';
 import { PrincipalLayout } from '../layout/PrincipalLayout';
 
@@ -29,6 +29,11 @@ export const IndividualPage = () => {
         const response = await getMarvelComicById(valor);
         const comics = extractComicData(response); // Procesar los datos
         result = comics[0]; // Tomamos el primer cómic de los resultados
+      }else if (tipo === 'serie') {
+        // Llamada a la API para cómics
+        const response = await getMarvelSerieById(valor);
+        const series = extractSerieData(response); // Procesar los datos
+        result = series[0]; // Tomamos el primer cómic de los resultados
       }
 
       if (result) {
@@ -60,7 +65,7 @@ export const IndividualPage = () => {
 
   // Si no se encuentra el héroe/comic, redirigir
   if (!hero) {
-    return <Navigate to="/marvel" />; // Redirige si no hay datos
+    return <Navigate to="/" />; // Redirige si no hay datos
   }
 
   // Función para regresar

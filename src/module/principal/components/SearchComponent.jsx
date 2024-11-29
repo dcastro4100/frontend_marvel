@@ -14,7 +14,7 @@ import {
   Typography,
   Alert,
 } from '@mui/material';
-import { extractCharacterData, extractComicData, getMarvelCharacters, getMarvelComics } from '../../../services';
+import { extractCharacterData, extractComicData, extractSerieData, getMarvelCharacters, getMarvelComics, getMarvelSeries } from '../../../services';
 import { useEffect, useState } from 'react';
 import { CustomCard } from './CustomCard';
 
@@ -60,6 +60,13 @@ export const SearchComponent = ({titulo,subtitulo,labelresultado,placeholdertext
       if (tipo==='comic'){
         const responsecomic = await getMarvelComics(valor);
         characters = extractComicData(responsecomic);
+
+        
+      }
+
+      if (tipo==='serie'){
+        const responsecomic = await getMarvelSeries(valor);
+        characters = extractSerieData(responsecomic);
 
         
       }

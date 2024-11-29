@@ -142,3 +142,38 @@ export const getMarvelSerieById = async (id = '') => {
         throw error;
     }
 };
+
+
+export const getMarvelCharactersByComic = async (comicId) => {
+    try {
+        
+        const response = await backendApi.get(`/comics/${comicId}/characters`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al consultar personajes:', error);
+        throw error;
+    }
+};
+
+export const getMarvelCharactersBySerie = async (serieId) => {
+    try {
+        
+        const response = await backendApi.get(`/series/${serieId}/characters`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al consultar personajes:', error);
+        throw error;
+    }
+};
+
+
+export const getMarvelComicsByCharacter = async (characterId) => {
+    try {
+        
+        const response = await backendApi.get(`/characters/${characterId}/comics`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al consultar personajes:', error);
+        throw error;
+    }
+};

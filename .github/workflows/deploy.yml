@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # or another version if needed
+          node-version: '18.20.0'  # or another version if needed
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -27,6 +27,10 @@ jobs:
       # Step 4: Build the app
       - name: Build the app
         run: npm run build
+        env:
+          VITE_MARVEL_API_PUBLIC_KEY: ${{ secrets.VITE_MARVEL_API_PUBLIC_KEY }}  # Pasar las variables de entorno si las usas en GitHub Secrets
+          VITE_MARVEL_API_PRIVATE_KEY: ${{ secrets.VITE_MARVEL_API_PRIVATE_KEY }}
+          VITE_MARVEL_API_URL_BACKEND: ${{ secrets.VITE_MARVEL_API_URL_BACKEND }}
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages

@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/frontend_marvel">
         <App />
       </BrowserRouter>
     </Provider>

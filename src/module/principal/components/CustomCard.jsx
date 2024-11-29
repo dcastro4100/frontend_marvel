@@ -57,7 +57,8 @@ export const CustomCard = ({ title, description, image, altText = 'Image', link 
                     </Typography>
                 )}
                 <Typography variant="body2" color="text.secondary">
-                    { description ?  description.length > 20 ? description.slice(0, 20) : description : {}}
+                { description ? (description.length > 20 ? description.slice(0, 20) : description) : ""}
+
                 </Typography>
             </CardContent>
         </Card>
